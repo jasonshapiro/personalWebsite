@@ -1,4 +1,12 @@
-connect = require('connect');
-connect.createServer(
-    connect.static('/home/jason/Projects/website/')
-).listen(8080);
+var express = require('express');
+var app = express()
+
+app.get('/', function(req, res) {
+   res.sendfile('index.html')
+});
+
+app.configure(function() {
+   app.use('/', express.static('/personalWebsite/'));
+});
+
+app.listen(3000);
